@@ -1,0 +1,9 @@
+{
+	sentencas: [
+		{
+			texto: "teste",
+			termoBusca: `"white shoe"`,
+			pasta: "teste",
+		}
+	]
+}
