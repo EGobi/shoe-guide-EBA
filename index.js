@@ -5,7 +5,7 @@ const robos = {
 	pixabay_image: require("./robos/pixabay.js"),
 }
 
-async function start() {
+async function start(){
 	const opcoes = ["google", "bing", "pixabay"];
 	const opcaoSelecionada = readLine.keyInSelect(opcoes, "Escolha uma opção: ");
 	switch(opcaoSelecionada) {
