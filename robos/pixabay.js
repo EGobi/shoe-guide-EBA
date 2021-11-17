@@ -81,12 +81,15 @@ async function robo() {
 					console.log("[" + sentenceIndex + "] [" + imageIndex + "] baixou imagem com sucesso: " + imageUrl);
 				} catch (error) {
 					console.log("[" + sentenceIndex + "] [" + imageIndex + "] erro ao baixar imagem: " + imageUrl);
+                    console.log(imageIndex + "-" + content.sentencas[sentenceIndex].texto + "pixabay.png");
+                    console.log(content.sentencas[sentenceIndex].pasta);
+                    console.log(error);
 				}
 			}
 		}
 	}
 	
-	async function download(url, fileName, pasta) {
+	async function download(url, filename, pasta) {
 		const dir = "./content/" + pasta;
 		if (!fs.existsSync(dir)) { fs.mkdirSync(dir); }
 		return imageDownloader.image({ url, url, dest: dir + "/" + filename });
