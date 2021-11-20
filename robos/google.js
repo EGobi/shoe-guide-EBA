@@ -9,15 +9,155 @@ async function robo() {
 	const content = {
         sentencas: [
             {
-                texto: "gato_branco",
-                termoBusca: `"white cat"`,
-                pasta: "solid_color",
+                texto: "salto_baixo_preto",
+                termoBusca: `"sapato feminino salto baixo preto"`,
+                pasta: "recomendamos",
             },
             {
-                termo: "gato_preto",
-                termoBusca: `"black cat"`,
-                pasta: "solid_color",
-            }
+                texto: "salto_baixo_vermelho",
+                termoBusca: `"sapato feminino salto baixo vermelho"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_baixo_bege",
+                termoBusca: `"sapato feminino salto baixo bege"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_baixo_azul",
+                termoBusca: `"sapato feminino salto baixo azul marinho"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_baixo_rosa",
+                termoBusca: `"sapato feminino salto baixo rosa"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_alto_preto",
+                termoBusca: `"sapato feminino salto alto preto"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_alto_vermelho",
+                termoBusca: `"sapato feminino salto alto vermelho"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_alto_bege",
+                termoBusca: `"sapato feminino salto alto bege"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_alto_azul",
+                termoBusca: `"sapato feminino salto alto azul marinho"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_alto_rosa",
+                termoBusca: `"sapato feminino salto alto rosa"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "sapatilha_preto",
+                termoBusca: `"sapato feminino sapatilha preta"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "sapatilha_vermelho",
+                termoBusca: `"sapato feminino sapatilha vermelha"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "sapatilha_bege",
+                termoBusca: `"sapato feminino sapatilha bege"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "sapatilha_azul",
+                termoBusca: `"sapato azul salto alto feminino"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "sapatilha_rosa",
+                termoBusca: `"sapato feminino sapatilha rosa"`,
+                pasta: "recomendamos",
+            },
+            {
+                texto: "salto_baixo_amarelo",
+                termoBusca: `"sapato feminino salto baixo preto"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_baixo_roxo",
+                termoBusca: `"sapato feminino salto baixo roxo"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_baixo_verde",
+                termoBusca: `"sapato feminino salto baixo verde"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_baixo_laranja",
+                termoBusca: `"sapato feminino salto baixo laranja"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_baixo_zebra",
+                termoBusca: `"sapato feminino salto baixo zebra"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_alto_amarelo",
+                termoBusca: `"sapato feminino salto alto amarelo"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_alto_roxo",
+                termoBusca: `"sapato feminino salto alto roxo"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_alto_verde",
+                termoBusca: `"sapato feminino salto alto verde"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_alto_laranja",
+                termoBusca: `"sapato feminino salto alto laranja"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "salto_alto_zebra",
+                termoBusca: `"sapato feminino salto alto zebra"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "sapatilha_amarelo",
+                termoBusca: `"sapato feminino sapatilha amarelo"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "sapatilha_roxo",
+                termoBusca: `"sapato feminino sapatilha roxo"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "sapatilha_verde",
+                termoBusca: `"sapato feminino sapatilha verde"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "sapatilha_laranja",
+                termoBusca: `"sapato feminino sapatilha laranja"`,
+                pasta: "não recomendamos",
+            },
+            {
+                texto: "sapatilha_zebra",
+                termoBusca: `"sapato feminino sapatilha zebra"`,
+                pasta: "não recomendamos",
+            },
         ]
     }
 
@@ -62,7 +202,7 @@ async function robo() {
                     if (content.imagensBaixadas.includes(imageUrl)) {
                         throw new Error("Imagem já foi baixada!");
                     }
-                    await download(imageUrl, imageIndex + "-" + content.sentencas[sentenceIndex].texto + "-google.png", content.sentencas[sentenceIndex].pasta);
+                    await download(imageUrl, content.sentencas[sentenceIndex].texto + "-google-" + imageIndex + ".png", content.sentencas[sentenceIndex].pasta);
                     content.imagensBaixadas.push(imageUrl);
                     console.log("[" + sentenceIndex + "] [" + imageIndex + "] > baixou imagem com sucesso: " + imageUrl);
                 } catch (error) {

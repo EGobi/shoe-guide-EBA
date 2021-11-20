@@ -1,3 +1,4 @@
+require("./download.js")();
 const imageDownloader = require("image-downloader");
 const pixabayApi = require("pixabay-api");
 const pixabaySearchCredenciais = require("../credenciais/pixabay-search.json");
@@ -7,18 +8,18 @@ const { exit } = require("process");
 async function robo() {
 	console.log("Início do robô de imagens do Pixabay");
 	let imagesUrl = [];
-	let imgPagina = 200;
-	let totalResultados = 500;
+	let imgPagina = 10;
+	let totalResultados = 10;
 
 	const content = {
-		sentencas: [
-		{
-			texto: "teste",
-			termoBusca: `"white shoe"`,
-			pasta: "teste",
-		},
-		],
-	};
+        sentencas: [
+            {
+                texto: "sapato_azul_feminino_baixo",
+                termoBusca: "\"shoe\"",
+                pasta: "recomendamos",
+            },
+        ]
+    }
 
 
 	await retornaLinksTodasSentencas(content);
@@ -27,7 +28,7 @@ async function robo() {
 	async function retornaLinksTodasSentencas(content) {
 		return new Promise(async (resolve) => {
 			for (const sentenca of content.sentencas) {
-				totalResultados = 500;
+				totalResultados = 10;
 				console.log("Buscando por: ", sentenca.termoBusca);
 				sentenca.imagens = await retornaTodasUrlsImagens(sentenca.termoBusca);
 				console.log("Total de resultados: ", totalResultados);
@@ -76,7 +77,7 @@ async function robo() {
 					if (content.imagensBaixadas.includes(imageUrl)) {
 						throw new Error("Imagem já baixada");
 					}
-					await download (imageUrl, imageIndex + "-" + content.sentencas[sentenceIndex].texto + "pixabay.png", content.sentencas[sentenceIndex].pasta);
+					await download(imageUrl, imageIndex + "-" + content.sentencas[sentenceIndex].texto + "pixabay.png", content.sentencas[sentenceIndex].pasta);
 					content.imagensBaixadas.push(imageUrl);
 					console.log("[" + sentenceIndex + "] [" + imageIndex + "] baixou imagem com sucesso: " + imageUrl);
 				} catch (error) {
@@ -87,12 +88,6 @@ async function robo() {
 				}
 			}
 		}
-	}
-	
-	async function download(url, filename, pasta) {
-		const dir = "./content/" + pasta;
-		if (!fs.existsSync(dir)) { fs.mkdirSync(dir); }
-		return imageDownloader.image({ url, url, dest: dir + "/" + filename });
 	}
 }
 
