@@ -1,5 +1,5 @@
 require("./download.js")();
-const imageDownloader = require("image-downloader");
+/*const imageDownloader = require("image-downloader");*/
 const fs = require("fs");
 const google = require("googleapis").google;
 const customSearch = google.customsearch("v1");
